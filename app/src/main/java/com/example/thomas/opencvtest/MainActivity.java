@@ -41,6 +41,12 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
 
     private CameraBridgeViewBase mOpenCvCameraView;
 
+    static {
+        if (!OpenCVLoader.initDebug()) {
+            System.err.println( "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+        }
+    }
+    
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
